@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Hacking Prank (Fake Terminal)</title>
+  <title>Hacking Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root { --green:#00ff66; }
@@ -23,8 +23,8 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="badge">FAKE‑TERMINAL v1.0</div>
-      <div class="badge dim">Demo‑Modus aktiv</div>
+      <div class="badge">Matrix</div>
+      <div class="badge dim">port:2556610</div>
     </div>
 
     <div class="terminal" id="term" aria-live="polite"></div>
@@ -35,7 +35,7 @@
       <button class="btn" id="fullscreen">⛶ Fullscreen</button>
       <button class="btn" id="back" onclick="location.href='index.html'">← Zurück</button>
     </div>
-    <div class="warn">Hinweis: Rein visuelle Demo. Es passiert nichts außerhalb dieser Seite.</div>
+    <div class="warn">mode: hacking</div>
   </div>
 
   <audio id="beep" preload="auto">
@@ -56,17 +56,17 @@
       "> Sammle Fingerprints...",
       "fingerprint --services --tls --cdn",
       "[✓] TLS Fingerprint simuliert",
-      "> Versuche Demo‑Login...",
+      "> Versuche Login...",
       "auth --method=token --user=guest",
-      "[✓] Demo‑Token akzeptiert",
+      "[✓] Token akzeptiert",
       "> Lade „geheime“ Daten…",
-      "pull --source=demo://cache --size=128MB",
+      "pull --source=://cache --size=2,80GB",
       "[✓] Datenfluss stabil",
-      ">>> DEMO‑SYSTEM: ZUGRIFF ERTEILT <<<",
-      "> Starte visuelle Matrix...",
+      ">>> Matrix‑SYSTEM: ZUGRIFF ERTEILT <<<",
+      ">  Starte Matrix...",
       "render --effect=code‑rain --intensity=high",
       "[✓] Effekt aktiv",
-      ">>> ENDE: Nur eine Show. Alles ist lokal und harmlos. <<<"
+      ">>> Hack has complete <<<"
     ];
 
     let i = 0;
