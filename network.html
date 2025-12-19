@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Network Hacking</title>
+  <title>Network Hacking Demo</title>
   <style>
     body {
       background: black;
@@ -34,4 +34,32 @@
   </style>
 </head>
 <body>
-  <h1>Network
+  <h1>Network Hacking Simulation</h1>
+  <div class="terminal" id="output"></div>
+  <button class="btn" onclick="location.href='index.html'">← Zurück zur Matrix</button>
+
+  <script>
+    const output = document.getElementById("output");
+    const lines = [
+      "Starte Netzwerk-Scan...",
+      "Scanne IP-Bereich: 192.168.0.1 - 192.168.0.255",
+      "[✓] Host gefunden: 192.168.0.42",
+      "Prüfe offene Ports...",
+      "[✓] Ports offen: 22, 80, 443",
+      "Simuliere Zugriff...",
+      ">>> NETZWERK 'GEHACKT' <<<",
+      "Hinweis: Alles nur eine Demo!"
+    ];
+    let i = 0;
+
+    function typeLine() {
+      if (i < lines.length) {
+        output.innerHTML += lines[i] + "<br>";
+        i++;
+        setTimeout(typeLine, 1000);
+      }
+    }
+    typeLine();
+  </script>
+</body>
+</html>
