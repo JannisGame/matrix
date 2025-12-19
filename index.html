@@ -1,66 +1,54 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Matrix Design</title>
+  <meta charset="UTF-8" />
+  <title>Matrix Start</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      margin: 0;
-      background: black;
-      overflow: hidden;
-      font-family: monospace;
-      color: #00ff66; /* Hellgrün */
+    :root { --green: #00ff66; }
+    html, body { margin:0; height:100%; background:#000; color:var(--green); font-family: monospace; overflow:hidden; }
+    canvas { display:block; }
+    .ui {
+      position: fixed; top:20px; left:20px; z-index:2;
+      display:flex; gap:12px; align-items:center;
     }
-    canvas {
-      display: block;
+    h1 { margin:0; text-shadow: 0 0 10px var(--green); }
+    .btn {
+      padding:10px 16px; background:var(--green); color:#000; font-weight:bold; border:none; cursor:pointer; box-shadow:0 0 10px var(--green);
     }
-    h1 {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: #00ff66;
-      text-shadow: 0 0 10px #00ff66;
-    }
+    .btn:hover { background:#000; color:var(--green); border:1px solid var(--green); }
   </style>
 </head>
 <body>
-  <h1>hack complete</h1>
+  <div class="ui">
+    <h1>Willkommen in der Matrix</h1>
+    <button class="btn" onclick="location.href='prank.html'">Hacking‑Prank starten</button>
+  </div>
   <canvas id="matrix"></canvas>
 
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
+    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+    addEventListener("resize", resize); resize();
 
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+    const chars = "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
 
-    const letters = "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
-    }
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#00ff66"; // Hellgrün
+    function draw(){
+      ctx.fillStyle = "rgba(0,0,0,0.08)";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = "#00ff66";
       ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
+      for(let i=0;i<drops.length;i++){
+        const text = chars[Math.floor(Math.random()*chars.length)];
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){ drops[i]=0; }
         drops[i]++;
       }
     }
-
     setInterval(draw, 33);
   </script>
 </body>
